@@ -109,53 +109,135 @@ body {
 .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
 .hero-badges { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.85rem; color: var(--text-muted); }
 
-/* Screen mockup */
+/* TV frame & screen mockup */
+.tv-frame { display: flex; flex-direction: column; align-items: center; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6)); }
+.tv-bezel {
+  background: #1a1d24;
+  border-radius: 14px;
+  padding: 10px 10px 8px;
+  border: 2px solid #2d3139;
+  width: 100%;
+}
+.tv-neck { width: 32px; height: 18px; background: #1a1d24; border-left: 2px solid #2d3139; border-right: 2px solid #2d3139; }
+.tv-base { width: 120px; height: 10px; background: #1a1d24; border-radius: 0 0 8px 8px; border: 2px solid #2d3139; border-top: none; }
+
 .screen-mockup {
-  background: #0a0e14;
-  border-radius: 12px;
-  border: 2px solid var(--border);
+  background: #0b1829;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
   aspect-ratio: 16/9;
   display: flex;
   flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
-.screen-bar { height: 28px; background: #111318; flex-shrink: 0; }
-.screen-inner { flex: 1; display: flex; }
-.slide-preview {
-  flex: 1;
-  background: linear-gradient(135deg, #1e3a5f 0%, #0f2340 100%);
-  padding: 20px 24px;
+
+/* Slide header */
+.slide-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px 8px;
+  background: linear-gradient(90deg, #0f2d52 0%, #0b1e3a 100%);
 }
-.slide-title {
-  font-size: 1rem;
+.slide-restaurant-name {
+  font-size: 0.95rem;
   font-weight: 800;
-  color: white;
-  letter-spacing: 0.1em;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.slide-restaurant-sub {
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 14px;
-  border-bottom: 2px solid var(--blue);
-  padding-bottom: 8px;
+  margin-top: 2px;
 }
-.slide-items { display: flex; flex-direction: column; gap: 7px; }
-.slide-item {
-  color: #c8d8e8;
-  font-size: 0.85rem;
-  padding: 5px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+.slide-live {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.5rem;
+  font-weight: 700;
+  color: #4ade80;
+  letter-spacing: 0.1em;
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.3);
+  border-radius: 20px;
+  padding: 3px 8px;
 }
-.slide-brand {
-  position: absolute;
-  bottom: 8px;
-  right: 12px;
+.live-dot {
+  width: 5px;
+  height: 5px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.slide-divider { height: 2px; background: linear-gradient(90deg, var(--blue) 0%, #7c3aed 100%); }
+
+/* Slide body — two-column menu */
+.slide-body {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  padding: 8px 14px;
+  background: #0b1829;
+}
+.menu-col { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.menu-col-divider { width: 1px; background: rgba(255,255,255,0.08); margin: 0 12px; }
+.menu-section-label {
+  font-size: 0.52rem;
+  font-weight: 700;
+  color: var(--blue-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(59,130,246,0.3);
+}
+.menu-row {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 2px 0;
+}
+.menu-name {
+  font-size: 0.58rem;
+  color: #c8d8ea;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.menu-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(255,255,255,0.15);
+  margin: 0 4px;
+  margin-bottom: 3px;
+}
+.menu-price {
   font-size: 0.6rem;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
 }
+.menu-row--special .menu-name { color: #fbbf24; }
+.menu-row--special .menu-price { color: #fbbf24; }
+
+/* Slide footer bar */
+.slide-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 14px;
+  background: rgba(37,99,235,0.15);
+  border-top: 1px solid rgba(37,99,235,0.3);
+}
+.slide-powered { font-size: 0.48rem; color: rgba(255,255,255,0.45); }
+.slide-powered strong { color: rgba(255,255,255,0.7); }
+.slide-time { font-size: 0.48rem; color: rgba(255,255,255,0.35); font-variant-numeric: tabular-nums; }
 
 /* How it works */
 .how-it-works { background: var(--bg-surface); }
